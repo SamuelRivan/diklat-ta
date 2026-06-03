@@ -1,0 +1,110 @@
+/* Global Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout Wrapper */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+    width: 70px;
+}
+
+.sidebar .menu-item span {
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.closed .menu-item span {
+    display: none;
+}
+
+/* Main Container */
+.main-container {
+    flex-grow: 1;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.closed ~ .main-container {
+    margin-left: 70px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: margin-left 0.3s ease;
+}
+
+/* Main Content */
+.content {
+    padding: 20px;
+}
+
+/* Pagination fixes: ensure SVG arrows and page links use reasonable sizes
+   This prevents vendor/tailwind markup from rendering oversized icons
+   in Bootstrap-based pages. */
+.pagination .page-link svg,
+.pagination svg,
+.relative.inline-flex svg,
+.w-5,
+.h-5 {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.pagination .page-link,
+.pagination .page-item > a,
+.pagination .page-item > span,
+.relative.inline-flex.items-center {
+    padding: .375rem .75rem !important;
+    line-height: 1 !important;
+}
+
+/* Make sure the pagination container is centered and not full-width */
+.pagination {
+    display: inline-flex;
+    padding-left: 0;
+    margin: 0.5rem 0;
+    list-style: none;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar.closed {
+        width: 60px;
+    }
+
+    .main-container {
+        margin-left: 200px;
+    }
+
+    .sidebar.closed ~ .main-container {
+        margin-left: 60px;
+    }
+}
